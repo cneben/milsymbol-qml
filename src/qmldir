@@ -1,0 +1,5 @@
+module Milsymbol
+
+Ms                      1.0 milsymbol.js
+BattleDimensionSelector 1.0 BattleDimensionSelector.qml
+SymbolListView          1.0 SymbolListView.qml

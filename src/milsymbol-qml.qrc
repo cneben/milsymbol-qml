@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/Milsymbol">
+        <file>qmldir</file>
+        <file>milsymbol.development.js</file>
+        <file>milsymbol.js</file>
+        <file>milstd.js</file>
+        <file>BattleDimensionSelector.qml</file>
+        <file>SymbolListView.qml</file>
+    </qresource>
+</RCC>
