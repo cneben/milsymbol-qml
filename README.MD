@@ -1,7 +1,7 @@
 Milsymbol sample in Qt QML
 ==========================
 
-![](https://github.com/cneben/milsymbol-qml/blob/master/screenshot.jpeg)
+![](https://github.com/cneben/milsymbol-qml/blob/master/screenshot.png)
 
 Demonstration of [milsymbol](https://github.com/spatialillusions/milsymbol) javascript library integration in a Qt/QML application (will eventually grow to an ORBAT editor).
 
