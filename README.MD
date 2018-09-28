@@ -3,7 +3,7 @@ Milsymbol sample in Qt QML
 
 ![](https://github.com/cneben/milsymbol-qml/blob/master/screenshot.jpeg)
 
-Demonstration of milsymbol javascript library integration in a Qt/QML application (will eventually grow to an ORBAT editor).
+Demonstration of [milsymbol](https://github.com/spatialillusions/milsymbol) javascript library integration in a Qt/QML application (will eventually grow to an ORBAT editor).
 
 
 ## Using
@@ -11,8 +11,8 @@ Demonstration of milsymbol javascript library integration in a Qt/QML applicatio
 Include `src/milsymbol-qml.pri` in your main `.pro` project file:
 
 
-```
-# yourpoject.pro QMake configuration
+```sh
+# your project.pro QMake configuration
 QT      += quick
 include(../src/milsymbol-qml.pri)
 ```
@@ -66,8 +66,8 @@ $ npm run bundle
 # target milsymbol.development.js is in ./dist directory, replace the file in milsymbol-qml/src
 
 # Building milstd.js
-$ git clone https://github.com/spatialillusions/milsymbol
-$ cd milsymbol
+$ git clone https://github.com/spatialillusions/milstd
+$ cd milstd
 $ npm install
 $ npm run build
 # target milstd.js is in current directory, replace the file in milsymbol-qml/src
