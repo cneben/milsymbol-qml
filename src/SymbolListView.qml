@@ -3,49 +3,67 @@ import QtQuick.Window 2.11
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.4
 
-import 'qrc:/milsymbol.js' as Ms
+import 'qrc:/Milsymbol' as Milsymbol
 
-Window {
-    id: window
-    visible: true
-    width: 900; height: 550
-    title: qsTr("Milsymbol.js QML Demo")
+ListView {
+    id: symbolListView
+    Layout.fillWidth: true
+    Layout.fillHeight: true
+    Layout.margins: 0
+    clip: true
+    spacing: 2
 
-    property var mainSymbol: new Ms.Symbol(symbolListView.symbol, {
-        size: 100,
-        fill: true
-    });
+    property color  hilightColor: "lightblue"
+    property real   hilightRadius: 2
+    property real   hilightOpacity: 0.6
 
-    RowLayout {
-        anchors.fill: parent
-        Image {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            source: "data:image/svg+xml;utf8," + window.mainSymbol.asSVG();
-            sourceSize: "400x400"
-            fillMode: Image.PreserveAspectFit
-        }
+    highlightFollowsCurrentItem: false
+    highlight: Rectangle {
+        id: hilightRectangle
+        x: symbolListView.currentItem ? symbolListView.currentItem.x : 0
+        y: symbolListView.currentItem ? symbolListView.currentItem.y : 0
+        width: symbolListView.currentItem ? symbolListView.currentItem.width : 0
+        height: symbolListView.currentItem ? symbolListView.currentItem.height : 0
 
-        Control {  // Main milsymbol unit generation control
-            Layout.fillWidth: false
-            Layout.preferredWidth: 350
-            Layout.fillHeight: true
-            ColumnLayout {
-                anchors.fill: parent
-                Ms.BattleDimensionSelector {
-                    id: battleDimensionSelector
-                    Layout.fillWidth: true; Layout.fillHeight: false
-                }
-                Ms.SymbolListView {
-                    id: symbolListView
-                    Layout.fillWidth: true; Layout.fillHeight: true
+        color: symbolListView.hilightColor
+        opacity: symbolListView.hilightOpacity
+        radius: symbolListView.hilightRadius
 
-                    spacing: 2
-                    hilightColor: "lightblue"
-                    hilightRadius: 3
-                    hilightOpacity: 0.6
-                }
+        Behavior on x { SpringAnimation { duration: 150; spring: 1.8; damping: 0.12 } }
+        Behavior on y { SpringAnimation { duration: 150; spring: 1.8; damping: 0.12 } }
+    }
+    property string codingScheme: 'WAR'
+    property string battleDimension: battleDimensionSelector.dimension
+    //! Actually selected symbol letter code (default to Infantry of course!).
+    property string symbol: 'SFGPUCI-----'
+
+    model: Milsymbol.Ms.std2525c[codingScheme][battleDimension]['main icon']
+    delegate: Item {
+        width: symbolListView.width
+        height: 32
+        MouseArea {
+            anchors.fill: parent;
+            onClicked: {
+                symbolListView.currentIndex = index
+                symbolListView.symbol = letterCode
             }
-        } // Unit symbol generation main control
-    } // Main RowLayout
-} // Window
+        }
+        property string letterCode: modelData['code scheme'] + 'F' + battleDimensionSelector.dimensionCode + modelData.code + "--"
+        property var    symbol: new Milsymbol.Ms.Symbol(letterCode, {size: 30, fill: true});
+        RowLayout {
+            id: unitRow
+            anchors.fill: parent
+            Image {
+                source: "data:image/svg+xml;utf8," + symbol.asSVG()
+                fillMode: Image.PreserveAspectFit
+            }
+            Text {
+                Layout.fillWidth: true
+                text: modelData.hierarchy
+                wrapMode: Text.WordWrap
+                width: parent.width
+                color: index % 2 == 0 ? "darkgreen" : "brown"
+            }
+        }
+    } // Delegate item
+} // ListView symbolListView

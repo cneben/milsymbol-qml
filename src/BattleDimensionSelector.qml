@@ -2,7 +2,7 @@ import QtQuick          2.11
 import QtQuick.Layouts  1.3
 import QtQuick.Controls 2.4
 
-import 'qrc:/milsymbol.js' as Ms
+import 'qrc:/Milsymbol' as Milsymbol
 
 ComboBox {
     id: battleDimensionSelector
@@ -27,7 +27,7 @@ ComboBox {
     model : warFightingModel
     delegate: ItemDelegate {
         width: parent.width
-        property var symbol: new Ms.Symbol(warFightingModel.get(index).rootSymbol, {size: 32, fill: true});
+        property var symbol: new Milsymbol.Ms.Symbol(warFightingModel.get(index).rootSymbol, {size: 32, fill: true});
         RowLayout {
             anchors.fill: parent
             Image {
