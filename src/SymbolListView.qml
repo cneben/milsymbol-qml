@@ -56,12 +56,11 @@ ListView {
                 source: "data:image/svg+xml;utf8," + symbol.asSVG()
                 fillMode: Image.PreserveAspectFit
             }
-            Text {
+            Label {
                 Layout.fillWidth: true
                 text: modelData.hierarchy
                 wrapMode: Text.WordWrap
                 width: parent.width
-                color: index % 2 == 0 ? "darkgreen" : "brown"
             }
         }
     } // Delegate item
