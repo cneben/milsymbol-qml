@@ -4,6 +4,8 @@
         <file>milsymbol.development.js</file>
         <file>milsymbol.js</file>
         <file>milstd.js</file>
+        <file>AffiliationSelector.qml</file>
+        <file>Modifier2Selector.qml</file>
         <file>BattleDimensionSelector.qml</file>
         <file>SymbolListView.qml</file>
     </qresource>

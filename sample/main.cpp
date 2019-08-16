@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
     std::unique_ptr<ms::ImageProvider> imageProvider = std::make_unique<ms::ImageProvider>();
-    engine.addImageProvider(ms::ImageProvider::providerId(), imageProvider.get());
+    engine.addImageProvider(ms::ImageProvider::providerId(), imageProvider.release());
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;

@@ -1,3 +1,4 @@
+.directory
 *.pro.user
 *.pro.user.*
 build-*-Debug

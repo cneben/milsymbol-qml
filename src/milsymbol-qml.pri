@@ -8,7 +8,9 @@ SOURCES     +=  $$PWD/msImageProvider.cpp
 HEADERS     +=  $$PWD/msImageProvider.h
 
 
-OTHER_FILES +=  $$PWD/BattleDimensionSelector.qml \
+OTHER_FILES +=  $$PWD/BattleDimensionSelector.qml   \
+                $$PWD/AffiliationSelector.qml       \
+                $$PWD/Modifier2Selector.qml       \
                 $$PWD/SymbolListView.qml
 
 RESOURCES += $$PWD/milsymbol-qml.qrc
